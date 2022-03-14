@@ -1,0 +1,50 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'bio.nvwa.boot'
+version = '1.0-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+
+    //池
+    implementation 'org.apache.commons:commons-pool2:2.10.0'
+
+    //hadoop
+    implementation 'org.apache.hadoop:hadoop-client:3.3.1'
+    implementation 'org.apache.hadoop:hadoop-hdfs:3.3.1'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+java {
+    withSourcesJar()
+}
+jar {
+    enabled = true
+}
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+artifacts {
+    archives sourcesJar
+}
