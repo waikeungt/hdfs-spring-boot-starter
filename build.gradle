@@ -2,10 +2,15 @@ plugins {
     id 'org.springframework.boot' version '2.6.4'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'maven-publish'
+    id 'signing'
+    id 'java-library'
 }
+//仓库配置，导入代码后需要在本地建一个sonatype的配置文件
+apply from: 'sonatype.gradle'
 
 group = 'bio.nvwa.boot'
-version = '1.0-SNAPSHOT'
+version = '1.0.1'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -20,24 +25,24 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
-    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    api 'org.springframework.boot:spring-boot-starter-aop'
 
     //池
-    implementation 'org.apache.commons:commons-pool2:2.10.0'
+    api 'org.apache.commons:commons-pool2:2.11.1'
 
     //hadoop
-    implementation 'org.apache.hadoop:hadoop-client:3.3.1'
-    implementation 'org.apache.hadoop:hadoop-hdfs:3.3.1'
+    api 'org.apache.hadoop:hadoop-client:3.3.1'
+    api 'org.apache.hadoop:hadoop-hdfs:3.3.1'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-tasks.named('test') {
-    useJUnitPlatform()
-}
-
 java {
+    withJavadocJar()
     withSourcesJar()
+}
+bootJar {
+    enabled = false
 }
 jar {
     enabled = true
@@ -47,4 +52,5 @@ tasks.withType(JavaCompile) {
 }
 artifacts {
     archives sourcesJar
+    archives javadocJar
 }
