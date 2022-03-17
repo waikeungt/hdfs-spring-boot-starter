@@ -4,14 +4,13 @@ import org.apache.hadoop.fs.*;
 import org.apache.hadoop.hdfs.DistributedFileSystem;
 
 /**
- * 自定义HDFS client</br>
- * 只是实现了普通的获得HDFS client的方法</br>
- * 具体实现还是使用HDFS的{@link FileSystem FileSystem}</br>
+ * <p>自定义HDFS client</p>
+ * <p>只是实现了普通的获得HDFS client的方法</p>
+ * <p>具体实现还是使用HDFS的{@link FileSystem FileSystem}</p>
  * @see FileSystem HDFS的FileSystem
  * @see DistributedFileSystem HDFS的DistributedFileSystem
  * @author waikeungt
  * @version 1.0
- * @date 2020/3/7 9:35
  */
 public class HdfsClient extends DistributedFileSystem {
 

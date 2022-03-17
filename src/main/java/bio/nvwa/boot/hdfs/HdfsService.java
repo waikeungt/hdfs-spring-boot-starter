@@ -17,13 +17,12 @@ import java.net.URI;
 import java.security.MessageDigest;
 
 /**
- * 描述：一般使用HDFS的类，只需注入使用<br/>
- * 实现了HDFS的常用方法<br/>
- * 不够的话{@link #getHdfsClient()}拿HdfsClient，记得{@link #returnHdfsClient(HdfsClient)}
+ * <p>描述：一般使用HDFS的类，只需注入使用</p>
+ * <p>实现了HDFS的常用方法</p>
+ * <p>不够的话{@link #getHdfsClient()}拿HdfsClient，记得{@link #returnHdfsClient(HdfsClient)}</p>
  *
  * @author waikeungt
  * @version 1.0
- * @date 2020/3/7 9:35
  */
 @Service
 public class HdfsService {
@@ -86,13 +85,15 @@ public class HdfsService {
 	}
 
 	/**
-	 * 在指定的路径上创建FSDataOutputStream，一般用这个比较多<br/>
+	 * <p>在指定的路径上创建FSDataOutputStream，一般用这个比较多</p>
 	 * 测试过，应该线程安全
 	 *
 	 * @param f          要创建的文件名
 	 * @param overwrite  覆盖，如果文件已经存在，那么如果是“true”，文件将被重写，如果“false”会引发错误
 	 * @param bufferSize 缓冲
 	 * @see HdfsClient#create(Path, boolean, int)
+	 * @return FSDataOutputStream
+	 * @throws Exception Exception
 	 */
 	@HdfsAnnotation
 	public FSDataOutputStream create(Path f, boolean overwrite, int bufferSize) throws Exception {

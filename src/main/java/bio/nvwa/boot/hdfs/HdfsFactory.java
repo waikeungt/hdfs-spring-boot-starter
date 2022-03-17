@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
  * HDFS工厂
  * @author waikeungt
  * @version 1.0
- * @date 2020/3/7 9:35
  */
 public class HdfsFactory implements PooledObjectFactory<HdfsClient> {
 
@@ -75,7 +74,7 @@ public class HdfsFactory implements PooledObjectFactory<HdfsClient> {
 	/**
 	 * 销毁对象
 	 *
-	 * @param p PooledObject<HdfsClient>
+	 * @param p PooledObject&lt;HdfsClient&gt;
 	 */
 	@Override
 	public void destroyObject(PooledObject<HdfsClient> p) {
@@ -86,7 +85,7 @@ public class HdfsFactory implements PooledObjectFactory<HdfsClient> {
 	/**
 	 * 验证对象是否可用
 	 *
-	 * @param p PooledObject<HdfsClient>
+	 * @param p PooledObject&lt;HdfsClient&gt;
 	 * @return 是否可用
 	 */
 	@Override
@@ -97,7 +96,7 @@ public class HdfsFactory implements PooledObjectFactory<HdfsClient> {
 	/**
 	 * 激活一个对象，使其可用
 	 *
-	 * @param p PooledObject<HdfsClient>
+	 * @param p PooledObject&lt;HdfsClient&gt;
 	 */
 	@Override
 	public void activateObject(PooledObject<HdfsClient> p) {
@@ -107,7 +106,7 @@ public class HdfsFactory implements PooledObjectFactory<HdfsClient> {
 	/**
 	 * 钝化一个对象,也可以理解为反初始化
 	 *
-	 * @param p PooledObject<FileSystem>
+	 * @param p PooledObject&lt;HdfsClient&gt;
 	 */
 	@Override
 	public void passivateObject(PooledObject<HdfsClient> p) {

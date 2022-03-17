@@ -16,7 +16,6 @@ import java.time.Duration;
  *
  * @author waikeungt
  * @version 1.0
- * @date 2020/3/7 9:35
  */
 @Configuration
 public class HdfsConfiguration {

@@ -4,11 +4,10 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
- * 对象池配置<br/>
+ * <p>对象池配置</p>
  * ConfigurationProperties是为了避免有些没写
  * @author waikeungt
  * @version 1.0
- * @date 2020/3/7 9:35
  */
 @Component
 @ConfigurationProperties(prefix = "hadoop.hdfs")
