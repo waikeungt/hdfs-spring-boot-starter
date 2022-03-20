@@ -17,12 +17,18 @@ public class HdfsFactory implements PooledObjectFactory<HdfsClient> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(HdfsFactory.class);
 
+	/**
+	 * hdfs配置
+	 */
 	private final HdfsProperties hdfsProperties;
 
 	public HdfsFactory(HdfsProperties hdfsProperties) {
 		this.hdfsProperties = hdfsProperties;
 	}
 
+	/**
+	 * 打印标志
+	 */
 	private static int ha = -1;
 
 	/**

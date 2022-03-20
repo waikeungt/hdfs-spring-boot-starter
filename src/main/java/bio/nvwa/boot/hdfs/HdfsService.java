@@ -29,8 +29,14 @@ public class HdfsService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(HdfsService.class);
 
+	/**
+	 * 用于切面操作{@link #getHdfsClient()}自动获取和返回
+	 */
 	private final ThreadLocal<HdfsClient> threadLocal = new ThreadLocal<>();
 
+	/**
+	 * 对象池，通过对象池获取{@link #getHdfsClient()}进行原生操作
+	 */
 	private final HdfsPool hdfsPool;
 
 	public HdfsService(HdfsPool hdfsPool) {
@@ -45,10 +51,19 @@ public class HdfsService {
 		threadLocal.remove();
 	}
 
+	/**
+	 * 通过对象池获取{@link HdfsClient}对象，并进行本Service暂不提供的原生操作，记得{@link #returnHdfsClient(HdfsClient)}
+	 * @return {@link HdfsClient}
+	 * @throws Exception 获取{@link HdfsClient}对象异常
+	 */
 	public HdfsClient getHdfsClient() throws Exception {
 		return this.hdfsPool.borrowObject();
 	}
 
+	/**
+	 * 返回{@link HdfsClient}对象到对象池
+	 * @param hdfsClient {@link HdfsClient}
+	 */
 	public void returnHdfsClient(HdfsClient hdfsClient) {
 		this.hdfsPool.returnObject(hdfsClient);
 	}
@@ -56,7 +71,7 @@ public class HdfsService {
 	/**
 	 * 获得URI，详见{@link HdfsClient#getUri FileSystem.getUri()}
 	 *
-	 * @return {@link URI URI}
+	 * @return {@link URI}
 	 */
 	@HdfsAnnotation
 	public URI getUri() {

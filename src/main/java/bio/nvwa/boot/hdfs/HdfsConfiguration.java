@@ -22,8 +22,14 @@ public class HdfsConfiguration {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(HdfsConfiguration.class);
 
+	/**
+	 * 配置内容
+	 */
 	private final HdfsProperties hdfsProperties;
 
+	/**
+	 * 对象池
+	 */
 	private HdfsPool pool;
 
 	@Autowired
@@ -79,10 +85,14 @@ public class HdfsConfiguration {
 		return size;
 	}
 
+	/**
+	 * 销毁对象池
+	 */
 	@PreDestroy
 	public void destroy() {
 		if (pool != null) {
 			pool.close();
+			LOGGER.info("销毁对象池");
 		}
 	}
 }
