@@ -51,15 +51,15 @@ hadoop:
 @ComponentScan(basePackages = {"bio.nvwa.boot.hdfs"})
 public class HdfsSpringBootStarterApplication {
 
-	public static void main(String[] args) {
-		System.setProperty("hadoop.hdfs.maxIdle", "10");
-		System.setProperty("hadoop.hdfs.maxTotal", "20");
-		System.setProperty("hadoop.hdfs.minIdle", "2");
-		System.setProperty("hadoop.hdfs.initialSize", "2");
-		System.setProperty("hadoop.hdfs.maxWaitMillis", "3000");
-		System.setProperty("hadoop.hdfs.defaultFs", "hdfs://localhost:9820");
-		SpringApplication.run(HdfsSpringBootStarterApplication.class, args);
-	}
+    public static void main(String[] args) {
+        System.setProperty("hadoop.hdfs.maxIdle", "10");
+        System.setProperty("hadoop.hdfs.maxTotal", "20");
+        System.setProperty("hadoop.hdfs.minIdle", "2");
+        System.setProperty("hadoop.hdfs.initialSize", "2");
+        System.setProperty("hadoop.hdfs.maxWaitMillis", "3000");
+        System.setProperty("hadoop.hdfs.defaultFs", "hdfs://localhost:9820");
+        SpringApplication.run(HdfsSpringBootStarterApplication.class, args);
+    }
 }
 ```
 
@@ -81,13 +81,13 @@ public class TestService {
     private final HdfsService hdfsService;
 
     public TestService(HdfsService hdfsService) {
-	    LOGGER.info("TestService准备构造注入");
+        LOGGER.info("TestService准备构造注入");
         this.hdfsService = hdfsService;
-	    LOGGER.info("TestService注入HdfsService成功");
+        LOGGER.info("TestService注入HdfsService成功");
     }
 
     public void test() {
-	    LOGGER.info("hdfs测试开始");
+        LOGGER.info("hdfs测试开始");
         hdfsService.test();
         LOGGER.info("hdfs测试完成");
     }
@@ -95,7 +95,9 @@ public class TestService {
 ```
 
 ## 引入
-https://mvnrepository.com/artifact/bio.nvwa.boot/hdfs-spring-boot-starter或者到中央仓库查询最新版
+到 [MvnRepository](https://mvnrepository.com/artifact/bio.nvwa.boot/hdfs-spring-boot-starter) 
+或者到 [中央仓库](https://search.maven.org/artifact/bio.nvwa.boot/hdfs-spring-boot-starter)
+查询最新版
 
 ### maven方式引入
 ```xml
