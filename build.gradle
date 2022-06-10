@@ -10,7 +10,7 @@ plugins {
 apply from: 'sonatype.gradle'
 
 group = 'bio.nvwa.boot'
-version = '1.0.1'
+version = '1.0.2'
 sourceCompatibility = '1.8'
 
 configurations {
