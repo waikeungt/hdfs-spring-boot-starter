@@ -10,7 +10,7 @@ plugins {
 apply from: 'sonatype.gradle'
 
 group = 'bio.nvwa.boot'
-version = '1.0.2'
+version = '1.0.5'
 sourceCompatibility = '1.8'
 
 configurations {
@@ -45,7 +45,10 @@ bootJar {
     enabled = false
 }
 jar {
+    //生成依赖jar包
     enabled = true
+    //取消原来plain的后缀
+    classifier('')
 }
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
